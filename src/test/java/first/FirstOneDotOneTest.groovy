@@ -61,6 +61,9 @@ class FirstOneDotOneTest extends Specification {
 
         and:
         first.findPalinromes('first obo second oto madam') == ['obo', 'oto']
+
+        and:
+        first.findPalinromes('first o45bo second o345to madam') == []
     }
 
     def "isEmail"() {

@@ -31,26 +31,20 @@ class FirstOneDotOne {
 
 //    поменять во всех словах строки первую букву на заглавную;
     String[] makeFirstLitterToUpperCase(String source) {
-        def result = []
-
-        source.split().each { it -> result << it.replace(it[0], it[0].toUpperCase())}
-
-        result
+        source.split().collect{ it -> it.capitalize()}
     }
 
 //    найти все слова, реверсия которых (обратный порядок букв) идентична самому слову
 //    и количество различных букв (исключая повторения) в слове меньше 5.
 //    (пример: 'bob', 'reviver', 'rotator')
     String[] findPalinromes(String source) {
-        def result = []
-
-        source.split().each {it ->
+        source.split().inject([]){res, it ->
             if (it.length() < 5 && it == it.reverse()) {
-                result << it
+                res << it
             }
-        }
 
-        result
+            res
+        }
     }
 
 //    определить, содержит ли строка электронный адрес;
