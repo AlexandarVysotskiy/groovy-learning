@@ -12,15 +12,8 @@ class FirstOneDotOneTest extends Specification {
             first = new FirstOneDotOne()
 
     def "findWordWithUpperCase"() {
-
         expect:
-        first.findLettersWithUpperCase('FiRsT') == 'is'
-
-        and:
-        first.findLettersWithUpperCase('SECOND') == ''
-
-        and:
-        first.findLettersWithUpperCase('third') == 'third'
+        first.findWordsOnlyWithLettersInLowerCase('First second Third fourth') == ['second', 'fourth']
     }
 
     def "findLettersFromOneIndexToSecond"() {
@@ -50,24 +43,24 @@ class FirstOneDotOneTest extends Specification {
 
     def "makeFirstLitterToUpperCase"() {
         expect:
-        first.makeFirstLitterToUpperCase('first second third') == 'First Second Third'
+        first.makeFirstLitterToUpperCase('first second third') == ['First', 'Second', 'Third']
 
         and:
-        first.makeFirstLitterToUpperCase('first') == 'First'
+        first.makeFirstLitterToUpperCase('first') == ['First']
 
         and:
-        first.makeFirstLitterToUpperCase('first  second') == 'First  Second'
+        first.makeFirstLitterToUpperCase('first  second') == ['First', 'Second']
 
         and:
-        first.makeFirstLitterToUpperCase('first  second') == 'First  Second'
+        first.makeFirstLitterToUpperCase('first  second') == ['First', 'Second']
     }
 
     def "findPalinromes"() {
         expect:
-        first.findPalinromes('first obo second ') == 'obo '
+        first.findPalinromes('first obo second ') == ['obo']
 
         and:
-        first.findPalinromes('first obo second oto madam') == 'obo oto '
+        first.findPalinromes('first obo second oto madam') == ['obo', 'oto']
     }
 
     def "isEmail"() {
