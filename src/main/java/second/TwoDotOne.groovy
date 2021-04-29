@@ -2,27 +2,24 @@ package second
 
 class TwoDotOne {
 
-    void findFiles(def path) {
-        def dir = new File(path)
+    List<TraverseResult> findFiles(def path) {
+        List<TraverseResult> res = new ArrayList<>();
 
-        dir.traverse { file ->
-            if (file.name.contains('groovy.')) {
-                println """
-                        *Name: ${file.name}*
-
-                        *Quantity: ${
-                    file.getParentFile().listFiles()
-                            .inject([]) { res, it ->
-                        if (it.name.contains('groovy.')) {
-                            res << it
-                        }
-                        res
-                    }.size()
-                }*
-
-                        *Size: ${file.size() / 1024}*
-                      """
+        new File(path).traverse { file ->
+            if (file.name.contains('groovy.txt')) {
+                res.add(new TraverseResult(file.name, findQuantity(file), file.size() / 1024))
             }
         }
+
+        res
+    }
+
+    private int findQuantity(File file) {
+        file.getParentFile().listFiles().inject([]) { res, it ->
+            if (it.name.contains('groovy.')) {
+                res << it
+            }
+            res
+        }.size()
     }
 }
