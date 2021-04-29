@@ -1,8 +1,10 @@
 package second
 
+import groovy.xml.MarkupBuilder
+
 class TwoDotOne {
 
-    List<TraverseResult> findFiles(def path) {
+    List<TraverseResult> findFiles(String path) {
         List<TraverseResult> res = new ArrayList<>();
 
         new File(path).traverse { file ->
@@ -21,5 +23,20 @@ class TwoDotOne {
             }
             res
         }.size()
+    }
+
+    String makeXml(List<TraverseResult> source) {
+        def writer = new StringWriter()
+        def xml = new MarkupBuilder(writer)
+
+        source.each { tr ->
+            xml.traverseResult {
+                name(tr.name)
+                quantity(tr.quantity)
+                size(tr.size)
+            }
+        }
+
+        writer.toString()
     }
 }
