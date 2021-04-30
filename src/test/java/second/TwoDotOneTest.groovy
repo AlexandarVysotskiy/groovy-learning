@@ -5,11 +5,10 @@ import spock.lang.Specification
 
 class TwoDotOneTest extends Specification {
 
-    @Shared
-            second = new TwoDotOne()
-    @Shared
-            res = second.findFiles('src\\main\\resources\\task_two_dot_one');
+    @Shared second = new TwoDotOne()
+    @Shared res = second.findFiles('src\\main\\resources\\task_two_dot_one');
 
+//    2.1
     def "findFiles"() {
         expect:
         res && res.size() == 3
@@ -30,6 +29,7 @@ class TwoDotOneTest extends Specification {
         res[2].size == 591.181640625
     }
 
+//    2.2
     def "makeXml"() {
 
         String xml = """<traverseResult>
