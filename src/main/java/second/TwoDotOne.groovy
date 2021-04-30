@@ -18,7 +18,7 @@ class TwoDotOne {
         List<TraverseResult> res = new ArrayList<>();
 
         new File(path).traverse { file ->
-            if (file.name ==~ /.+?[gG]roovy.+/) {
+            if (file.name.contains('groovy.txt')) {
                 res.add(new TraverseResult(file.name, findQuantity(file), file.size() / 1024))
             }
         }
@@ -28,7 +28,7 @@ class TwoDotOne {
 
     private int findQuantity(File file) {
         file.getParentFile().listFiles().inject([]) { res, it ->
-            if (it.name.contains('groovy.')) {
+            if (it.name.contains('groovy.txt')) {
                 res << it
             }
             res
