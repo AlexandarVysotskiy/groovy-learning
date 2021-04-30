@@ -12,7 +12,7 @@ package third
 class Third {
 
     File[] find(String path) {
-        new File(path).eachFileMatch(~/.*\.txt/) {file ->
+        new File(path).eachFileMatch(~/.*\.TXT/) {file ->
             file.renameTo(file.path.replace( file.name, getNewName(file)))
         }
 
@@ -22,6 +22,6 @@ class Third {
     private String getNewName(File file) {
         String onlyNumber = file.name.find(~/\d*/)
 
-        """${onlyNumber.reverse()}${onlyNumber.collect{it as int}.value.sum() }.dat"""
+        """${onlyNumber.reverse()}${onlyNumber.collect{it as int}.sum() }.dat"""
     }
 }

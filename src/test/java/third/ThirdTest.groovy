@@ -14,8 +14,11 @@ class ThirdTest extends Specification {
     def setup() {
         new File("src\\test\\resources").mkdir()
         new File(path).mkdir()
-        new File("""${path}/123.txt""").createNewFile()
-        new File("""${path}/12345.txt""").createNewFile()
+        new File("""${path}/123.TXT""").createNewFile()
+        new File("""${path}/12345.TXT""").createNewFile()
+        new File("""${path}/no-digit.TXT""").createNewFile()
+        new File("""${path}/no-txt.exe""").createNewFile()
+        new File("""${path}/no-txt-digit-234234.java""").createNewFile()
     }
 
     def cleanup() {
