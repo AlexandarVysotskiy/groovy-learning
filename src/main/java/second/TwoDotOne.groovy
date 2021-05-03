@@ -15,36 +15,34 @@ class TwoDotOne {
 
 //    2.1
     List<TraverseResult> findFiles(String path) {
-        List<TraverseResult> res = new ArrayList<>();
+        List<TraverseResult> res = []
 
         new File(path).traverse { file ->
-            if (file.name.contains('groovy.txt')) {
-                res.add(new TraverseResult(file.name, findQuantity(file), file.size() / 1024))
+            if (file.name.matches(~/.{0,}[gG]roovy\.[a-zA-Z0-9]+$+/)) {
+                res.add(new TraverseResult(name: file.name, size: file.size() / 1024))
             }
         }
+
+        res.collect {tr -> tr.setQuantity(findQuantity(res, tr.name))}
 
         res
     }
 
-    private int findQuantity(File file) {
-        file.getParentFile().listFiles().inject([]) { res, it ->
-            if (it.name.contains('groovy.txt')) {
-                res << it
-            }
-            res
-        }.size()
+    private int findQuantity(List<TraverseResult> files, String name) {
+        files.findAll{tr -> tr.name == name}.size()
     }
 
 //    2.2
     String makeXml(List<TraverseResult> source) {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
-
-        source.each { tr ->
-            xml.traverseResult {
-                name(tr.name)
-                quantity(tr.quantity)
-                size(tr.size)
+        xml.document {
+            source.each { tr ->
+                xml.traverseResult {
+                    name(tr.name)
+                    quantity(tr.quantity)
+                    size(tr.size)
+                }
             }
         }
 
