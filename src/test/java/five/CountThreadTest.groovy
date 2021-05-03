@@ -7,9 +7,6 @@ class CountThreadTest extends Specification {
     def "countTest"() {
         Count count = new Count()
 
-        synchronized (count) {
-        }
-
         int maxNumber = 20
 
         List<CountThread> threadList = []
