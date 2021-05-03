@@ -31,14 +31,14 @@ class FirstOneDotOne {
 
 //    поменять во всех словах строки первую букву на заглавную;
     String[] makeFirstLitterToUpperCase(String source) {
-        source.split().collect{ it -> it.capitalize()}
+        source.split().collect { it -> it.capitalize() }
     }
 
 //    найти все слова, реверсия которых (обратный порядок букв) идентична самому слову
 //    и количество различных букв (исключая повторения) в слове меньше 5.
 //    (пример: 'bob', 'reviver', 'rotator')
     String[] findPalinromes(String source) {
-        source.split().inject([]){res, it ->
+        source.split().inject([]) { res, it ->
             if (it.toSet().size() < 5 && it == it.reverse()) {
                 res << it
             }
@@ -49,15 +49,7 @@ class FirstOneDotOne {
 
 //    определить, содержит ли строка электронный адрес;
     boolean isEmail(String source) {
-        boolean result = false
-
-        source.split().each {
-            if (it.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")) {
-                result =  true
-                return
-            }
-        }
-
-        result
+        source.split().any {String it ->
+            it.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")}
     }
 }
