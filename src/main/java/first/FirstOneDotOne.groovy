@@ -39,7 +39,7 @@ class FirstOneDotOne {
 //    (пример: 'bob', 'reviver', 'rotator')
     String[] findPalinromes(String source) {
         source.split().inject([]){res, it ->
-            if (it.length() < 5 && it == it.reverse()) {
+            if (it.toSet().size() < 5 && it == it.reverse()) {
                 res << it
             }
 
@@ -49,6 +49,15 @@ class FirstOneDotOne {
 
 //    определить, содержит ли строка электронный адрес;
     boolean isEmail(String source) {
-        source.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
+        boolean result = false
+
+        source.split().each {
+            if (it.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")) {
+                result =  true
+                return
+            }
+        }
+
+        result
     }
 }
