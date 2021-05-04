@@ -27,7 +27,7 @@ class TwoDotOne {
             }
         }
 
-        List<String> onlyFileNamesList = res.collect { it.name }
+        List<String> onlyFileNamesList = res*.name
 
         foldersList.each {
             it.eachFile { file ->
