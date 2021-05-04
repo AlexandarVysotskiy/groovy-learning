@@ -21,33 +21,30 @@ class TwoDotOne {
 
         new File(path).eachFile { file ->
             if (file.getName().matches(~/.{0,}[gG]roovy\.[a-zA-Z0-9]+$+/)) {
-                res.add(new TraverseResult(name: file.name, size: file.size() / 1024))
+                res.add(new TraverseResult(name: file.name, size: file.size() / 1024, quantity: 1))
             } else if (file.directory) {
                 foldersList << file
             }
         }
 
-        List<String> onlyFileNamesList = res*.name
+        findTraverseByName(foldersList, res)
+    }
 
+    List<TraverseResult> findTraverseByName(List<File> foldersList, List<TraverseResult> res) {
         foldersList.each {
             it.eachFile { file ->
-                if (onlyFileNamesList.contains(file.name)) {
-                    res.add(new TraverseResult(name: file.name, size: file.size() / 1024))
+                if (res*.name.contains(file.name)) {
+                    res.each { TraverseResult tr ->
+                        if (tr.name == file.name) {
+                            tr.setQuantity(++tr.getQuantity())
+                            tr.setSize(file.size() / 1024 + tr.getSize())
+                        }
+                    }
                 }
             }
         }
 
-        res.each { tr ->
-            List<TraverseResult> duplicate = findDuplicate(res, tr.name)
-            tr.setQuantity(duplicate.size())
-            tr.setSize(duplicate.collect { it.size }.sum())
-        }
-
-        res.unique()
-    }
-
-    private List<TraverseResult> findDuplicate(List<TraverseResult> files, String name) {
-        files.findAll { tr -> tr.name == name }
+        res
     }
 
 //    2.2
