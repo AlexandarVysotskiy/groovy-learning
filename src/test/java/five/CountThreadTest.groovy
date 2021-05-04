@@ -7,18 +7,21 @@ class CountThreadTest extends Specification {
     def "countTest"() {
         Count count = new Count()
 
-        int maxNumber = 20
+        int maxNumber = 10
+        int sleepTime = 100
 
-        List<CountThread> threadList = []
+        List<Thread> threadList = []
 
-        for (int i = 1; i <= 10; i++) {
-            threadList << new CountThread(count, i.toString(), maxNumber, 100)
+        for (int i = 1; i <= maxNumber; i++) {
+            threadList << Thread.start {
+                println "Thread: ${Thread.currentThread().getName()}, value before icreamenting: ${count.getValue()}"
+                count.increment()
+                println "Thread: ${Thread.currentThread().getName()}, value after icreamenting: ${count.getValue()}"
+                sleep(sleepTime)
+            }
         }
 
-        threadList.each { it.start() }
         threadList.each { it.join() }
-
-        sleep(maxNumber * 100)
 
         expect:
         count.getValue() == maxNumber
