@@ -27,3 +27,4 @@ class CountThreadTest extends Specification {
         count.getValue() == maxNumber
     }
 }
+
