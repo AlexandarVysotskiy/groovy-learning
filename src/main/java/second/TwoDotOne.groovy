@@ -17,19 +17,37 @@ class TwoDotOne {
     List<TraverseResult> findFiles(String path) {
         List<TraverseResult> res = []
 
-        new File(path).traverse { file ->
-            if (file.name.matches(~/.{0,}[gG]roovy\.[a-zA-Z0-9]+$+/)) {
+        List<File> foldersList = []
+
+        new File(path).eachFile { file ->
+            if (file.getName().matches(~/.{0,}[gG]roovy\.[a-zA-Z0-9]+$+/)) {
                 res.add(new TraverseResult(name: file.name, size: file.size() / 1024))
+            } else if (file.directory) {
+                foldersList << file
             }
         }
 
-        res.collect {tr -> tr.setQuantity(findQuantity(res, tr.name))}
+        List<String> onlyFileNamesList = res.collect { it.name }
 
-        res
+        foldersList.each {
+            it.eachFile { file ->
+                if (onlyFileNamesList.contains(file.name)) {
+                    res.add(new TraverseResult(name: file.name, size: file.size() / 1024))
+                }
+            }
+        }
+
+        res.each { tr ->
+            List<TraverseResult> duplicate = findDuplicate(res, tr.name)
+            tr.setQuantity(duplicate.size())
+            tr.setSize(duplicate.collect { it.size }.sum())
+        }
+
+        res.unique()
     }
 
-    private int findQuantity(List<TraverseResult> files, String name) {
-        files.findAll{tr -> tr.name == name}.size()
+    private List<TraverseResult> findDuplicate(List<TraverseResult> files, String name) {
+        files.findAll { tr -> tr.name == name }
     }
 
 //    2.2
