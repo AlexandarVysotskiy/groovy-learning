@@ -68,6 +68,10 @@ class SixthTest extends Specification {
         ninthFile.createNewFile()
     }
 
+    def cleanup() {
+        rootFolder.deleteDir()
+    }
+
     def "existAllFiles"() {
         expect:
         firstFile.exists()
@@ -117,7 +121,5 @@ class SixthTest extends Specification {
         eightFolder.exists()
         ninthFolder.exists()
         tenthFolder.exists()
-
-        rootFolder.deleteDir()
     }
 }
