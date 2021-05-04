@@ -20,32 +20,33 @@ class SeventhTest extends Specification {
     Person third
     Person fourth
     Person fifth
+    Person sixth
+    Person seventh
 
     List<Person> personList;
 
     def setup() {
-        personList = []
+        personList = [
+                first = new Person(firstName: 'John', surName: 'Wick',
+                        address: new Person.Address(city: 'Mensk', street: 'Garden', index: 123), 'age': 33),
 
-        first = new Person(firstName: 'John', surName: 'Wick',
-                address: new Person.Address(city: 'Mensk', street: 'Garden', index: 123), 'age': 33)
+                second = new Person(firstName: 'Vasya', surName: 'Pupkin',
+                        address: new Person.Address(city: 'Brest', street: 'Gogolya', index: 99), 'age': 55),
 
-        second = new Person(firstName: 'Vasya', surName: 'Pupkin',
-                address: new Person.Address(city: 'Brest', street: 'Gogolya', index: 99), 'age': 55)
+                third = new Person(firstName: 'Eva', surName: 'Adam',
+                        address: new Person.Address(city: 'Grodno', street: 'Pushkina'), 'age': 22),
 
-        third = new Person(firstName: 'Eva', surName: 'Adam',
-                address: new Person.Address(city: 'Grodno', street: 'Pushkina'), 'age': 22)
+                fourth = new Person(firstName: 'Nina', surName: 'Vasyna',
+                        address: new Person.Address(city: 'Moscow', street: 'First', index: 111), 'age': 18),
 
-        fourth = new Person(firstName: 'Nina', surName: 'Vasyna',
-                address: new Person.Address(city: 'Moscow', street: 'First', index: 111), 'age': 18)
+                fifth = new Person(firstName: 'Olya', surName: 'Vasyna',
+                        address: new Person.Address(city: 'Moscow', street: 'First'), 'age': 19),
 
-        fifth = new Person(firstName: 'Olya', surName: 'Vasyna',
-                address: new Person.Address(city: 'Moscow', street: 'First'), 'age': 19)
+                sixth = new Person(firstName: 'Olya', surName: 'Vasyna', 'age': 19),
 
-        personList << first
-        personList << second
-        personList << third
-        personList << fourth
-        personList << fifth
+                seventh = new Person(firstName: 'Olya', surName: 'Vasyna',
+                        address: new Person.Address(city: 'Moscow', street: 'First', index: 0), 'age': 19)
+        ]
     }
 
     def "PowerTest"() {
@@ -58,8 +59,9 @@ class SeventhTest extends Specification {
 
     def "NotNullPrint"() {
         expect:
+        Seventh.printIfNotNull(0) == 0
         Seventh.printIfNotNull(new Person().getAddress()) == 'no value'
-        Seventh.printIfNotNull('') == 'no value'
+        Seventh.printIfNotNull('') == ''
         Seventh.printIfNotNull('TestString') == 'TestString'
     }
 
@@ -68,5 +70,8 @@ class SeventhTest extends Specification {
 
         expect:
         indices.size() == 3
+        indices[0] == 123
+        indices[1] == 99
+        indices[2] == 111
     }
 }
