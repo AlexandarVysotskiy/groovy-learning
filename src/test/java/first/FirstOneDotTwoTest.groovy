@@ -5,8 +5,7 @@ import spock.lang.Specification
 
 class FirstOneDotTwoTest extends Specification {
 
-    @Shared
-            first = new FirstOneDotTwo()
+    @Shared first = new FirstOneDotTwo()
 
     def "findDifferenceNumberAmount"() {
         expect:

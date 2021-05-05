@@ -1,0 +1,187 @@
+<list>
+  <keybind>
+    <command>buyOnPointGreaterThanMarket</command>
+    <description>Buy on point better than market</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">B</key>
+  </keybind>
+  <keybind>
+    <command>buyOnMarket</command>
+    <description>Buy on market</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">B</key>
+  </keybind>
+  <keybind>
+    <command>buyBestOffer</command>
+    <description>Buy best offer</description>
+    <key alt="1" shift="0" ctrl="0" meta="0">B</key>
+  </keybind>
+  <keybind>
+    <command>sellByMarket</command>
+    <description>Sell by market</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">S</key>
+  </keybind>
+  <keybind>
+    <command>sellBestCourse</command>
+    <description>Sell by best ask</description>
+    <key alt="1" shift="0" ctrl="0" meta="0">T</key>
+  </keybind>
+  <keybind>
+    <command>sellOnPointGreaterThanMarket</command>
+    <description>Sell on point better than market</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">S</key>
+  </keybind>
+  <keybind>
+    <command>refundRequest</command>
+    <description>Cancel order</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F1</key>
+  </keybind>
+  <keybind>
+    <command>refundAll</command>
+    <description>Cancel all</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F2</key>
+  </keybind>
+  <keybind>
+    <command>refundAllByInstrument</command>
+    <description>Cancel all by instrument</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F3</key>
+  </keybind>
+  <keybind>
+    <command>refundAllPurchases</command>
+    <description>Cancel all bids</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F4</key>
+  </keybind>
+  <keybind>
+    <command>refundAllPurchasesByInstrument</command>
+    <description>Cancel all bids by instrument</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F5</key>
+  </keybind>
+  <keybind>
+    <command>refundAllSellings</command>
+    <description>Cancel all asks</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F6</key>
+  </keybind>
+  <keybind>
+    <command>refundAllSellingsByInstrument</command>
+    <description>Cancel all asks by instrument</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F7</key>
+  </keybind>
+  <keybind>
+    <command>refundAllLimits</command>
+    <description>Cancel all LIMIT</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F8</key>
+  </keybind>
+  <keybind>
+    <command>refundAllLimitsByInstrument</command>
+    <description>Cancel all LIMIT by instrument</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F9</key>
+  </keybind>
+  <keybind>
+    <command>refundAllStops</command>
+    <description>Cancel all STOP</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F10</key>
+  </keybind>
+  <keybind>
+    <command>refundAllStopsByInstrument</command>
+    <description>Cabcel all STOP by instrument</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">F11</key>
+  </keybind>
+  <keybind>
+    <command>moveRequestBetterThanMarket</command>
+    <description>Move order better than market</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">M</key>
+  </keybind>
+  <keybind>
+    <command>movePurchaseRequestBetterThanMarket</command>
+    <description>Move buy order better than market</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">M</key>
+  </keybind>
+  <keybind>
+    <command>moveSellRequestBetterThanMarket</command>
+    <description>Move sell order better than market</description>
+    <key alt="1" shift="0" ctrl="1" meta="0">M</key>
+  </keybind>
+  <keybind>
+    <command>createTableRates</command>
+    <description>Create quote table</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">N</key>
+  </keybind>
+  <keybind>
+    <command>createWindowChart</command>
+    <description>Create chart window</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">C</key>
+  </keybind>
+  <keybind>
+    <command>createWindowQueueOrders</command>
+    <description>Create quote queue window</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">O</key>
+  </keybind>
+  <keybind>
+    <command>createWindowTapeDeal</command>
+    <description>Create tape deals window</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">D</key>
+  </keybind>
+  <keybind>
+    <command>createPanelPortfolio</command>
+    <description>Create portfolio window</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">P</key>
+  </keybind>
+  <keybind>
+    <command>createPanelOrder</command>
+    <description>Create order window</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">O</key>
+  </keybind>
+  <keybind>
+    <command>createPanelDeals</command>
+    <description>Create deals window</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">D</key>
+  </keybind>
+  <keybind>
+    <command>createPanelJournal</command>
+    <description>Open event log</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">J</key>
+  </keybind>
+  <keybind>
+    <command>zoomIn</command>
+    <description>Zoom in</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">Add</key>
+  </keybind>
+  <keybind>
+    <command>zoomOut</command>
+    <description>Zoom out</description>
+    <key alt="0" shift="0" ctrl="1" meta="0">Subtract</key>
+  </keybind>
+  <keybind>
+    <command>selectTabConnection</command>
+    <description>Select connection tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F1</key>
+  </keybind>
+  <keybind>
+    <command>selectTabCreate</command>
+    <description>Select create tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F2</key>
+  </keybind>
+  <keybind>
+    <command>selectTabOrders</command>
+    <description>Select orders tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F3</key>
+  </keybind>
+  <keybind>
+    <command>selectTabChart</command>
+    <description>Select chart tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F4</key>
+  </keybind>
+  <keybind>
+    <command>selectTabQueueOrder</command>
+    <description>Select quote queue tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F5</key>
+  </keybind>
+  <keybind>
+    <command>selectTabSetting</command>
+    <description>Select settings tab</description>
+    <key alt="0" shift="1" ctrl="1" meta="0">F6</key>
+  </keybind>
+  <keybind>
+    <command>openParametersWindow</command>
+    <description>Open Settings</description>
+    <key alt="1" shift="1" ctrl="1" meta="0">Enter</key>
+  </keybind>
+</list>
