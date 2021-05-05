@@ -1,13 +1,18 @@
 package eight
 
-class HelloEngine {
+import eight.scripts.ScriptForImport
 
 
-    static void main(String[] args) {
-        hello()
-    }
+static String hello() {
+    "Hello, ${new ScriptForImport().message}"
+}
 
-    static String hello() {
-        "Hello, ${new ScriptForImport().message}"
+int maxSalary
+
+for (s in salaryList) {
+    if (maxSalary < s) {
+        maxSalary = s
     }
 }
+
+maxSalary

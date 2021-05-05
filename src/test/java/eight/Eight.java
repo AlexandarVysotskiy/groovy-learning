@@ -79,4 +79,14 @@ public class Eight {
         script.getDeclaredMethod("hello", new Class[]{}).invoke(scriptInstance, new Object[]{})
     );
   }
+
+  @Test
+  public void groovyScriptArrayProcess() throws Exception {
+    final GroovyScriptEngine engine = new GroovyScriptEngine("src/main/java/eight/");
+    final Binding binding = new Binding();
+
+    binding.setVariable("salaryList", new int[]{1500, 2000, 3000, 5000});
+
+    assertEquals(5000, engine.run("HelloEngine.groovy", binding));
+  }
 }
