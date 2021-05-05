@@ -27,11 +27,11 @@ class TwoDotOne {
             }
         }
 
-        findFilesInNotRootFoldersAndSetQuantity(foldersList, res)
+        findFilesInNotRootFolders(foldersList, res)
     }
 
-    List<TraverseResult> findFilesInNotRootFoldersAndSetQuantity(List<File> foldersList,
-                                                                 List<TraverseResult> res) {
+    List<TraverseResult> findFilesInNotRootFolders(List<File> foldersList,
+                                                   List<TraverseResult> res) {
         foldersList.each {
             it.eachFile { file ->
                 if (res*.name.contains(file.name)) {
