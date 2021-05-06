@@ -1,21 +1,23 @@
+package ten
+
 import fourth.Person.Address
 import spock.lang.Specification
 
 class TenTest extends Specification {
 
-    Map<String, Map<Integer, Address>> map
+    Map map
 
     def setup() {
         map = [
-                'Grisha': [13: new Address('city': 'Mensk')],
-                'Olya'  : [16: new Address('city': 'Brest')],
-                'Masha' : [33: new Address('city': 'Grodno')],
-                'Ura'   : [44: new Address('city': 'Vitebsk')]
+                'Grisha': [age: 13, address: 'str. Surganova 18, Mensk'],
+                'Olya'  : [age: 16, address: 'str. Gogolya 44, Brest'],
+                'Masha' : [age: 33, address: 'str. Pushkina 51, Grodno'],
+                'Ura'   : [age: 44, address: 'str. Kolasa 33, Vitebsk']
         ]
 
-        Map<String, Map<Integer, Address>> secondMap = [
-                'Pasha': [35: new Address('city': 'Gomel')],
-                'Erema': [99: new Address('city': 'Mogilev')]
+        Map secondMap = [
+                'Pasha': [age: 35, address: 'srt. Kupaly 21, Gomel'],
+                'Erema': [age: 99, address: 'str. Gagarina 22, Mogilev']
         ]
 
         map.putAll(secondMap)
@@ -57,11 +59,11 @@ class TenTest extends Specification {
     def "findPersonAge"() {
         when:
         Map moreTwenty = map.findAll { it ->
-            it.value.keySet()[0] > 20
+            it.value.get('age') > 20
         }
 
         Map lessFifty = map.findAll { it ->
-            it.value.keySet()[0] < 50
+            it.value.get('age') < 50
         }
 
         then:
