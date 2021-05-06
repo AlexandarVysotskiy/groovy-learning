@@ -14,7 +14,7 @@ class NineTest extends Specification {
 
         mb.xml {
             for (int amountUnusualValue = 0; amountUnusualValue < 10; amountUnusualValue++) {
-                for (int amountUsualValue = 0; amountUsualValue <= 100_000; amountUsualValue++) {
+                for (int amountUsualValue = 0; amountUsualValue <= 1000_000; amountUsualValue++) {
                     mb.field(name: amountUsualValue) {
                         value(amountUsualValue)
                     }
@@ -34,8 +34,13 @@ class NineTest extends Specification {
         XML_FILE.delete()
     }
 
-    def "test"() {
+    def "eachLineTest"() {
         expect:
         Nine.findValue(XML_FILE, 'unusual value') == 10
+    }
+
+    def "findValueUseGroovyMethodsTest"() {
+        expect:
+        Nine.findValueUseGroovyMethods(XML_FILE, 'unusual value') == 10
     }
 }

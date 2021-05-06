@@ -1,5 +1,7 @@
 package nine
 
+import groovy.util.slurpersupport.GPathResult
+
 /**
  * 9.1. Чтение больших файлов: eсть большой xml файл - 1 GB Структуры
  * <xml>
@@ -24,5 +26,13 @@ class Nine {
         }
 
         count
+    }
+
+    static int findValueUseGroovyMethods(File file, String findValue) {
+        GPathResult xml = new XmlSlurper().parse(file)
+
+        xml.'*'.findAll { node ->
+            node.text() == findValue
+        }*.text().size()
     }
 }
