@@ -1,6 +1,5 @@
 package ten
 
-import fourth.Person.Address
 import spock.lang.Specification
 
 class TenTest extends Specification {
@@ -20,29 +19,35 @@ class TenTest extends Specification {
                 'Erema': [age: 99, address: 'str. Gagarina 22, Mogilev']
         ]
 
-        map.putAll(secondMap)
+        map = map + secondMap
     }
 
 
-    def "addOneElementTest"() {
+    def "addElementsTest"() {
         given:
-        Map ageAddress = [24: new Address('city': 'Mozar')]
+        Map ageAddress = [age: 24, address: 'Mozar']
+        Map ageAddressTwo = [age: 33, address: 'Some city']
 
         expect:
         map.size() == 6
 
         when:
         map['Peter'] = ageAddress
+        map.Vasya = ageAddressTwo
 
         then:
-        map.size() == 7
+        map.size() == 8
+
         map.Peter == ageAddress
         map.get('Peter') == ageAddress
+
+        map.Vasya == ageAddressTwo
+        map.get('Vasya') == ageAddressTwo
     }
 
     def "removeOneElementTest"() {
         given:
-        Map ageAddress = [24: new Address('city': 'Mozar')]
+        Map ageAddress = [age: 24, address: 'Mozar']
         map['Peter'] = ageAddress
 
         expect:
